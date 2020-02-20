@@ -1,0 +1,30 @@
+{
+  "name": "@joeapearson/result",
+  "version": "1.0.0",
+  "description": "Rust-inspired Result object for more elegant success and failure handling",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "preversion": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joeapearson/result.git"
+  },
+  "keywords": [
+    "result",
+    "error",
+    "catch",
+    "throw"
+  ],
+  "author": "Joe Pearson <joepearson87@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joeapearson/result/issues"
+  },
+  "homepage": "https://github.com/joeapearson/result#readme",
+  "devDependencies": {
+    "jest": "25.1.0"
+  }
+}
