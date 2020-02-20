@@ -1,5 +1,8 @@
 const OperationResultError = require('./operation-result-error');
 
+/**
+ * Describes an Operation Result
+ */
 class OperationResult {
   /**
    * Creates a new OperationResult.
