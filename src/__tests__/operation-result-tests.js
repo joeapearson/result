@@ -1,56 +1,52 @@
-/**
- * @copyright 2020-present by Avid Technology, Inc.
- */
+const OperationResult = require('../operation-result');
 
-const Result = require('../result');
-
-describe('Result', () => {
+describe('OperationResult', () => {
   it('can be constructed', () => {
-    const res = new Result();
+    const res = new OperationResult();
 
     expect(res.error).toBe(null);
-    expect(res.value).toBe(null);
+    expect(res.data).toBe(null);
     expect(res.ok).toBe(true);
   });
 
-  it('can be assigned value', () => {
-    const value = 'my value';
-    const res = new Result(value);
+  it('can be assigned data', () => {
+    const data = 'my data';
+    const res = new OperationResult(data);
 
     expect(res.error).toBe(null);
-    expect(res.value).toBe(value);
+    expect(res.data).toBe(data);
     expect(res.ok).toBe(true);
   });
 
   it('can be assigned an error', () => {
-    const value = undefined;
+    const data = undefined;
     const err = new Error('test');
 
-    const res = new Result(value, err);
+    const res = new OperationResult(data, err);
 
     expect(res.error).toBe(err);
-    expect(res.value).toBe(null);
+    expect(res.data).toBe(null);
     expect(res.ok).toBe(false);
   });
 
   describe('expect', () => {
     it('provides an expect handle to throw on errors', () => {
-      const value = 'my value';
+      const data = 'my data';
       const err = new Error('test');
 
-      const res = new Result(value, err);
+      const res = new OperationResult(data, err);
 
       expect(res.error).toBe(err);
-      expect(res.value).toBe(value);
+      expect(res.data).toBe(data);
       expect(res.ok).toBe(false);
 
       expect(() => res.expect('assumption')).toThrowError();
     });
 
     it('does not throw when a result is successful', () => {
-      const value = 'my value';
+      const data = 'my data';
 
-      const res = new Result(value);
+      const res = new OperationResult(data);
       expect(() => res.expect('assumption')).not.toThrowError();
     });
   });

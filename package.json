@@ -1,10 +1,11 @@
 {
-  "name": "@joeapearson/result",
+  "name": "opres",
   "version": "1.0.0",
   "description": "Rust-inspired Result object for more elegant success and failure handling",
-  "main": "src/index.js",
+  "main": "src/operation-result.js",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "preversion": "npm test"
   },

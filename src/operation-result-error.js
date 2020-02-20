@@ -1,8 +1,4 @@
-/**
- * @copyright 2020-present by Avid Technology, Inc.
- */
-
-class ResultError extends Error {
+class OperationResultError extends Error {
   constructor(message, originalError) {
     super(message);
     Object.defineProperties(this, {
@@ -12,7 +8,7 @@ class ResultError extends Error {
         configurable: false,
         writable: false,
       },
-      isResultError: {
+      isOperationResultError: {
         value: true,
         enumerable: true,
         configurable: false,
@@ -22,4 +18,4 @@ class ResultError extends Error {
   }
 }
 
-module.exports = ResultError;
+module.exports = OperationResultError;
