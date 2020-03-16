@@ -7,7 +7,15 @@ export class OperationResult {
   data?: any
   error?: OperationResultError
 
-  constructor(data: any = null, error: Error = null) {
+  /**
+   * Creates a new OperationResult
+   * @param [data] resulting data
+   * @param [error] an error if present
+   */
+  constructor(
+    data: any = null,
+    error: Error = null
+  ) {
     Object.defineProperties(this, {
       data: {
         value: data,
@@ -29,14 +37,17 @@ export class OperationResult {
 
   /**
    * Throws when error is present with the specified message.
+   *
    * @param {string} message
-   * @returns {void}
-   * @throws {ResultError}
+   * @returns {this}
+   * @throws {OperationResultError}
    */
-  expect(message: string) {
+  expect(message: string): this {
     if (this.error) {
       throw new OperationResultError(message, this.error);
     }
+
+    return this;
   }
 }
 

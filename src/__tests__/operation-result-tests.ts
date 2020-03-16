@@ -49,5 +49,13 @@ describe('OperationResult', () => {
       const res = new OperationResult(data);
       expect(() => res.expect('assumption')).not.toThrowError();
     });
+
+    it('can be chained to an assignment', () => {
+      const data = 'my data';
+      const op = () => new OperationResult(data);
+
+      expect(op().expect('assumption')).toBeInstanceOf(OperationResult);
+      expect(op().expect('assumption').data).toBe(data);
+    });
   });
 });
