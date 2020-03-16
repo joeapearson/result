@@ -10,7 +10,7 @@ any data returned, and any errors that occurred along the way, allowing you to c
 failure-handling logic on top.
 
 ```js
-const OperationResult = require('opres');
+const { OperationResult } = require('opres');
 
 const goodApiCall = () => {
   return new OperationResult('my returned data');

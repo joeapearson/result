@@ -1,5 +1,11 @@
-class OperationResultError extends Error {
-  constructor(message, originalError) {
+export class OperationResultError extends Error {
+  originalError: Error
+  isOperationResultError: true
+
+  constructor(
+    message: string,
+    originalError: Error
+  ) {
     super(message);
     Object.defineProperties(this, {
       originalError: {
@@ -18,4 +24,4 @@ class OperationResultError extends Error {
   }
 }
 
-module.exports = OperationResultError;
+export default OperationResultError;

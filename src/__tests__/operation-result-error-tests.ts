@@ -1,4 +1,4 @@
-const OperationResultError = require('../operation-result-error');
+import { OperationResultError} from '../operation-result-error';
 
 describe('OperationResultError', () => {
   it('wraps the original error', () => {

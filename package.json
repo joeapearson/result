@@ -2,12 +2,14 @@
   "name": "opres",
   "version": "1.2.0",
   "description": "Rust-inspired Result object for more elegant success and failure handling",
-  "main": "src/operation-result.js",
+  "main": "dist",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "preversion": "npm test"
+    "preversion": "npm test",
+    "prepublish": "npm run test && npm run build",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,15 @@
   },
   "homepage": "https://github.com/joeapearson/result#readme",
   "devDependencies": {
-    "jest": "25.1.0"
+    "@types/jest": "25.1.3",
+    "@types/node": "12.12.29",
+    "@typescript-eslint/eslint-plugin": "2.21.0",
+    "@typescript-eslint/parser": "2.21.0",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-plugin-import": "2.20.1",
+    "jest": "25.1.0",
+    "ts-jest": "25.2.1",
+    "typescript": "3.8.3"
   }
 }

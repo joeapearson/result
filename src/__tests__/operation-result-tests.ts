@@ -1,4 +1,4 @@
-const OperationResult = require('../operation-result');
+import { OperationResult } from '../operation-result';
 
 describe('OperationResult', () => {
   it('can be constructed', () => {
@@ -19,7 +19,7 @@ describe('OperationResult', () => {
   });
 
   it('can be assigned an error', () => {
-    const data = undefined;
+    const data:any = undefined;
     const err = new Error('test');
 
     const res = new OperationResult(data, err);

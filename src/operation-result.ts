@@ -1,16 +1,13 @@
-const OperationResultError = require('./operation-result-error');
+import OperationResultError from './operation-result-error';
 
 /**
  * Describes an Operation Result
  */
-class OperationResult {
-  /**
-   * Creates a new OperationResult.
-   *
-   * @param {*} [data] arbitrary data
-   * @param {Error | null} [error] error
-   */
-  constructor(data = null, error = null) {
+export class OperationResult {
+  data?: any
+  error?: OperationResultError
+
+  constructor(data: any = null, error: Error = null) {
     Object.defineProperties(this, {
       data: {
         value: data,
@@ -36,11 +33,11 @@ class OperationResult {
    * @returns {void}
    * @throws {ResultError}
    */
-  expect(message) {
+  expect(message: string) {
     if (this.error) {
-      throw new ResultError(message, this.error);
+      throw new OperationResultError(message, this.error);
     }
   }
 }
 
-module.exports = OperationResult;
+export default OperationResult;
