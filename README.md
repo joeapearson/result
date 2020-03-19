@@ -35,6 +35,18 @@ const res2 = badApiCall().expect('could not call API');
 const res3 = goodApiCall().expect('this will not throw');
 ```
 
+You can also wrap a series of OperationResults as follows:
+
+```js
+const { OperationResult } = require('opres');
+
+const myFirstResult = new OperationResult();
+const mySecondResult = new OperationResult();
+
+
+const myOverallResult = OperationResult.wrap([myFirstResult, mySecondResult]);
+```
+
 ## Other notes
 
 ### Pattern matching
