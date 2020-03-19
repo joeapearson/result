@@ -51,6 +51,19 @@ export class OperationResult {
 
     return this;
   }
+
+  static wrap(results: OperationResult[]) {
+    const ret = new OperationResult();
+    const firstFailed = results.find((result) => result.ok !== true);
+
+    ret.data = results;
+
+    if (firstFailed) {
+        ret.error = firstFailed.error;
+    }
+
+    return ret;
+}
 }
 
 export default OperationResult;

@@ -71,4 +71,31 @@ describe('OperationResult', () => {
       expect(res.error).toBe(err);
     });
   });
+
+  describe('wrap', () => {
+    it('can wrap a set of OperationResults', () => {
+      const res1 = new OperationResult();
+      const res2 = new OperationResult();
+
+      const overallRes = OperationResult.wrap([res1, res2]);
+
+      expect(overallRes.data).toEqual([res1, res2]);
+      expect(overallRes.ok).toBe(true);
+      expect(overallRes.error).toBe(null);
+    });
+
+    it('reports a failing result', () => {
+      const res1 = new OperationResult();
+      const res2 = new OperationResult();
+
+      const error = new Error('test');
+      res2.error = error;
+
+      const overallRes = OperationResult.wrap([res1, res2]);
+
+      expect(overallRes.data).toEqual([res1, res2]);
+      expect(overallRes.ok).toBe(false);
+      expect(overallRes.error).toBe(error);
+    });
+  });
 });
