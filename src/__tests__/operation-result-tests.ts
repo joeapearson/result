@@ -57,5 +57,18 @@ describe('OperationResult', () => {
       expect(op().expect('assumption')).toBeInstanceOf(OperationResult);
       expect(op().expect('assumption').data).toBe(data);
     });
+
+    it('allows assignment of data and error after creation', () => {
+      const data = 'my data';
+      const err = new Error('test');
+
+      const res = new OperationResult();
+
+      res.data = data;
+      res.error = err;
+
+      expect(res.data).toBe(data);
+      expect(res.error).toBe(err);
+    });
   });
 });

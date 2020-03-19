@@ -5,7 +5,7 @@ import OperationResultError from './operation-result-error';
  */
 export class OperationResult {
   data?: any
-  error?: OperationResultError
+  error?: Error
 
   /**
    * Creates a new OperationResult
@@ -19,10 +19,12 @@ export class OperationResult {
     Object.defineProperties(this, {
       data: {
         value: data,
+        writable: true,
         enumerable: true,
       },
       error: {
         value: error,
+        writable: true,
         enumerable: true,
       },
     });
