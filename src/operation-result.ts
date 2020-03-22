@@ -3,7 +3,7 @@ import OperationResultError from './operation-result-error';
 /**
  * Describes an Operation Result
  */
-export class OperationResult<T> {
+export class OperationResult<T = any> {
   data?: T
   error?: Error
 
