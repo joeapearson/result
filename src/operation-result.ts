@@ -1,32 +1,29 @@
-import OperationResultError from './operation-result-error';
+import OperationResultError from "./operation-result-error";
 
 /**
  * Describes an Operation Result
  */
 export class OperationResult<T = any> {
-  data?: T
-  error?: Error
+  data?: T;
+  error?: Error;
 
   /**
    * Creates a new OperationResult
    * @param [data] resulting data
    * @param [error] an error if present
    */
-  constructor(
-    data: T = null,
-    error: Error = null
-  ) {
+  constructor(data: T = null, error: Error = null) {
     Object.defineProperties(this, {
       data: {
         value: data,
         writable: true,
-        enumerable: true,
+        enumerable: true
       },
       error: {
         value: error,
         writable: true,
-        enumerable: true,
-      },
+        enumerable: true
+      }
     });
   }
 
@@ -52,18 +49,20 @@ export class OperationResult<T = any> {
     return this;
   }
 
-  static wrap(results: OperationResult<any>[]): OperationResult<OperationResult<any>[]> {
-    const ret = new OperationResult<OperationResult<any>[]>();
-    const firstFailed = results.find((result) => result.ok !== true);
+  static wrap<T = any>(
+    results: OperationResult<T>[]
+  ): OperationResult<OperationResult<T>[]> {
+    const ret = new OperationResult<OperationResult<T>[]>();
+    const firstFailed = results.find(result => result.ok !== true);
 
     ret.data = results;
 
     if (firstFailed) {
-        ret.error = firstFailed.error;
+      ret.error = firstFailed.error;
     }
 
     return ret;
-}
+  }
 }
 
 export default OperationResult;
