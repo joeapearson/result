@@ -3,8 +3,8 @@ import OperationResultError from './operation-result-error';
 /**
  * Describes an Operation Result
  */
-export class OperationResult {
-  data?: any
+export class OperationResult<T> {
+  data?: T
   error?: Error
 
   /**
@@ -13,7 +13,7 @@ export class OperationResult {
    * @param [error] an error if present
    */
   constructor(
-    data: any = null,
+    data: T = null,
     error: Error = null
   ) {
     Object.defineProperties(this, {
@@ -52,8 +52,8 @@ export class OperationResult {
     return this;
   }
 
-  static wrap(results: OperationResult[]) {
-    const ret = new OperationResult();
+  static wrap(results: OperationResult<any>[]): OperationResult<OperationResult<any>[]> {
+    const ret = new OperationResult<OperationResult<any>[]>();
     const firstFailed = results.find((result) => result.ok !== true);
 
     ret.data = results;
